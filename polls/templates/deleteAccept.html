@@ -1,0 +1,9 @@
+<div id="shadow-container">
+	<div id='auth-menu' class="change-description">
+      <p id="accept-question">Вы уверены что хотите удалить аккаунт?</p>
+		<form id='auth-form' action='/user/deleteme' method='POST'>
+			{% csrf_token %}
+			<button id='submit-button'>Удалить</button>
+		</form>
+	</div>
+</div>

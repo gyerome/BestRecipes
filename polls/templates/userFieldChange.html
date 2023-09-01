@@ -1,0 +1,33 @@
+<div id='shadow-container'>
+	{% if field == 'avatar' %}
+	<div id='auth-menu' class="change-avatar">
+		<h1 id='auth-header'>Сменить аватар</h1>
+		<p id='description-of-action'>Выберите аватар</p>
+		<form id='auth-form' action='/user/changefield' method='POST' enctype="multipart/form-data">
+			{% csrf_token %}
+			{{form.avatar}}
+			<button id='submit-button'>Отправить</button>
+		</form>
+	</div>
+
+	{% elif field == 'description' %}
+	<div id='auth-menu' class="change-description">
+	<h1 id='auth-header'>Сменить описание</h1>
+		<form id='auth-form' action='/user/changefield' method='POST'>
+			{% csrf_token %}
+			{{form.description}}
+			<button id='submit-button'>Отправить</button>
+		</form>
+	</div>
+
+	{% elif field == 'username' %}
+	<div id='auth-menu' class="change-description">
+		<h1 id='auth-header'>Сменить имя пользователя</h1>
+		<form id='auth-form' action='/user/changefield' method='POST'>
+			{% csrf_token %}
+			{{form.username}}
+			<button id='submit-button'>Отправить</button>
+		</form>
+	</div>
+	{% endif %}
+</div>

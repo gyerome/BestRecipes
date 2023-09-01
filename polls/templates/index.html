@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" type="text/css" href="/static/css/left-sidebar.css">
+<link rel="stylesheet" type="text/css" href="/static/css/index.css?v=1">
+<link rel="stylesheet" type="text/css" href="static/css/recipe.css?v=6">
+{% endblock %}
+
+{%block left_side%}
+<aside class='left-sidebar'>
+	<script src="{% static 'js/setFilter.js'%}"></script>
+	<ul class=left-sidebar>
+		<li><button class='left-sidebar' onclick="setCategory(null)">All recipes</button></li>
+		{% for category in categories %}
+		<li><button class="left-sidebar" onclick="setCategory({{category.id}})">{{category.name}}</button></li>
+		{% endfor %}
+		</ul>
+</aside>
+{% endblock %}
+
+{% block nav %}
+{% if request.user.is_authenticated %}
+<nav>
+	<button id='new-theme' class='top-menu' onclick="loadMenu('api/newrecipe')"><p id='plus-icon'>+</p><h2>New recipe</h2></button>
+	<button class='themes-filter top-menu' onclick="setType(null)"><h2>Recipes</h2></button>
+	<button class='themes-filter top-menu' onclick="setType('subscribes')"><h2>Subscribes</h2></button>
+</nav>
+{% endif %}
+{% endblock %}
+
+{%block content%}
+<section>
+	<content id="content"></content>
+	<script>var loadUrl='chunks/recipes';</script>
+	<script src="{% static '/js/load-chunk.js' %}"></script>
+
+</section>
+{%endblock%}

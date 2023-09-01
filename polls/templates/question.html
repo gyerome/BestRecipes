@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" type="text/css" href="/static/css/question.css">
+{% endblock %}
+
+{%block left_side%}
+
+{% endblock %}
+{%block content%}
+  <section id='comments-section'>
+      <article id='first-comment'>
+          <div class='comment-header'>
+              <img class='comment-avatar' src='{% get_media_prefix%}/{{forum.author.avatar}}'>
+              <h3 class='username'>{{forum.author.username}}</h3>
+          </div>
+          <p class='comment-text'>{{forum.text_content}}</p>
+      </article>
+
+      {% for comment in comments %}
+      <article class='comment'>
+          <div class='comment-header'>
+              <img class='comment-avatar' src='{% get_media_prefix%}/{{comment.author.avatar}}'>
+              <h3 class='username'>{{comment.author.username}}</h3>
+          </div>
+          <p class='comment-text'>{{comment.text_content}}</p>
+      </article>
+      {% endfor %}
+      <script>
+          function overflow(e) {
+          return e.scrollWidth > e.offsetWidth || e.scrollHeight > e.offsetHeight;
+          }
+          //Проверяем вмещается ли текст во всех комментариях
+          function enlarge_if_overflow() {
+              let comments = document.getElementById('comments-section').getElementsByTagName('article')
+              for (let article of comments) {
+                      let headerHeight = article.getElementsByTagName('div')[0].offsetHeight + 1;
+                      let commentTextElement = article.getElementsByTagName('p')[0]
+                      let commentTextStyles = getComputedStyle(commentTextElement)
+                      let commentTextSize = parseInt(
+                                            commentTextElement.offsetHeight + 1 +
+                                            parseInt(commentTextStyles.marginTop.slice(0, -3)) +
+                                            parseInt(commentTextStyles.marginBottom.slice(0, -3)));
+                      let commentStyles = getComputedStyle(article)
+                      let padding = parseInt(commentStyles.paddingTop.slice(0, -3)) +
+                                    parseInt(commentStyles.paddingBottom.slice(0, -3)) + 2
+                      article.style.height = headerHeight + commentTextSize +'px';
+              var isEnlarged = true;
+              }
+          }
+          enlarge_if_overflow();
+          window.addEventListener('resize', enlarge_if_overflow);
+          window.addEventListener('mousemove', enlarge_if_overflow, once=true)
+      </script>
+  </section>
+{%endblock%}

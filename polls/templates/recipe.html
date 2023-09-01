@@ -1,0 +1,12 @@
+{% load static %}
+{% for recipe in recipes %}
+    <article class="recipe">
+        <div class="recipe-header">
+            <a href="/recipe/{{recipe.id}}"><img src="{% get_media_prefix %}/{{recipe.photo}}" class="recipe-image"></a>
+        </div>
+        <a href="/recipe/{{recipe.id}}/" class="recipe-link"><h3 class='name'>{{recipe.name}}</h3></a>
+        <div class='description-position'>
+            <p class="recipe-description">{{recipe.description}}</p>
+        </div>
+    </article>
+{% endfor %}

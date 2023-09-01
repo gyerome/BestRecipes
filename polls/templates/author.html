@@ -1,0 +1,26 @@
+{% load static %}
+{% for author in authors %}
+<article class="grid-element">
+    <div class="user-header">
+        <img src="{% get_media_prefix %}/{{author.avatar}}" class="user-avatar">
+        <h3 class="username">{{author.username}}</h3>
+        <img src="/static/images/recipes-icon.png" class="recipes-icon">
+        <p class="recipes-quantity">{{author.recipes_quantity}}</p>
+    </div>
+    <p class="recipe-description">{{author.description}}</p>
+    <div class="subscribe">
+        {% if request.user.is_authenticated %}
+            <button id="{{loaded_authors|add:forloop.counter}}" type="submit" class="subscribe-button"
+                    onclick="subscribe({{author.id}},{{request.user.id}},
+                    {{loaded_authors|add:forloop.counter}}, '{{csrf_token}}')">
+                Следить
+            </button>
+        {% else %}
+        <button type="button" onclick="loadMenu(register)" class="subscribe-button">Следить</button>
+        {% endif %}
+        <div class="subscribers">
+            <p class="subscribers-number">{{author.subscribers_quantity}}</p>
+        </div>
+    </div>
+</article>
+{% endfor %}

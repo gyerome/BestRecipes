@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" type="text/css" href="/static/css/recipePage.css">
+{% endblock %}
+
+{%block left_side%}
+
+{% endblock %}
+{%block content%}
+<section>
+    <h2>{{recipe.name}}</h2>
+    <div id='recipe-header' >
+        <img src='{% get_media_prefix %}/{{recipe.photo}}' id='recipe-photo'>
+        <div id='recipe-info'>
+            <div id='author'>
+                <img src="{% get_media_prefix %}/{{recipe.author.avatar}}" id='user-avatar'>
+                <p id='username'>{{recipe.author.username}}</p>
+            </div>
+            <p id='description'>{{recipe.description}}</p>
+        </div>
+    </div>
+    <div id='recipe'>
+        {{recipe.text_content}}
+    </div>
+</section>
+{%endblock%}

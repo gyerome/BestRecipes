@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block links %}
+<link rel="stylesheet" type="text/css" href="/static/css/left-sidebar.css">
+<link rel="stylesheet" type="text/css" href="/static/css/user.css?v=1">
+<link rel="stylesheet" type="text/css" href="/static/css/recipe.css">
+<script src="{% static 'js/setFilter.js' %}"></script>
+<script>loadUrl = '/chunks/recipes'; var curUser = {{user.id}}</script>
+<script src="/static/js/load-chunk.js"></script>
+{% endblock %}
+
+{%block left_side%}
+<aside class='left-sidebar'>
+	<script src="{% static 'js/setFilter.js'%}"></script>
+	<ul class=left-sidebar>
+		<li><button class='left-sidebar' onclick="setCategory(null)">Все рецепты</button></li>
+		{% for category in categories %}
+		<li><button class="left-sidebar" onclick="setCategory({{category.id}})">{{category.name}}</button></li>
+		{% endfor %}
+	</ul>
+</aside>
+{% endblock %}
+
+{%block content%}
+<section>
+	<div id='user-info'>
+		<div id='left-side'>
+			<img src='{% get_media_prefix %}/{{user.avatar}}' id='avatar'><br>
+			<div class='stat'><img src='{% static "images/subscribers-icon.png" %}' id='subscribers'><p class='stat-number'>{{user.subscribers_quantity}}</p></div>
+			<div class='stat'><img src='{% static "images/recipes-icon.png" %}' id='articles'><p class='stat-number'>{{user.recipes_quantity}}</p></div>
+			<div class='stat'><img src='{% static "images/eye-icon.png" %}' id='views'><p class='stat-number'>{{user.get_views_quantity}}</p></div>
+		</div>
+
+		<div id='right-side'>
+			<div>
+				<h2 id='username'>{{user.username}}</h2>
+				<p id='description'>{{user.description}}</p>
+			</div>
+			{% if request.user.id != user.id %}
+			<button id='subscribe-button'>Следить</button>
+			{% endif %}
+		</div>
+
+		{% if request.user.id == user.id %}
+		<div id='settings-side'>
+			<div id='settings'>
+			<img src='{% static "images/settings-icon.png" %}' id='settings-icon'>
+			<ul id='settings-list'>
+				<li class='setting' onclick="loadMenu('/user/changefield?field=username')">Сменить имя</li>
+				<li class='setting' onclick="loadMenu('/user/changefield?field=description')">Сменить описание</li>
+				<li class='setting' onclick="loadMenu('/user/changefield?field=avatar')">Сменить аватар</li>
+				<li class='setting' onclick="loadMenu('/user/changep')">Сменить пароль</li>
+				<li class='setting' id='delete-account' onclick="loadMenu('/user/deletemenu')">Удалить аккаунт</li>
+			</ul>
+		</div>
+		{% endif %}
+		</div>
+	</div>
+	<content id="content"></content>
+</section>
+{%endblock%}

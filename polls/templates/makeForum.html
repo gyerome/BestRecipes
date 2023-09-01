@@ -1,0 +1,12 @@
+<div id='shadow-container'>
+<div id='auth-menu'>
+    <h1 id='auth-header'>Создать тему</h1>
+    <form method="POST" action="/api/makeforum" id='auth-form'>
+        {% csrf_token %}
+        {{ form.name }}
+        {{ form.theme }}
+        {{ form.text_content }}
+        <button type="submit" id='submit-button'>Создать</button>
+    </form>
+</div>
+</div>

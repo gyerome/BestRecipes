@@ -1,0 +1,56 @@
+{% load static %}
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>{% block title %}BestRecipes{%endblock%}</title>
+	<link rel="stylesheet" type="text/css" href="/static/css/base.css?v=117">
+	<link rel="stylesheet" type="text/css" href="/static/css/auth-menu.css?v=7">
+	<script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+	<script src="/static/js/loadMenu.js?v=4"></script>
+	<script src="/static/js/logoutRequest.js?v=1"></script>
+	<script src="/static/js/search.js"></script>
+	<script src="/static/js/login.js?v=1"></script>
+	<script src="/static/js/calculateDate.js"></script>
+	{% block links%}{% endblock %}
+</head>
+<body>
+<script>var auth='/user/auth';var register='/user/register';</script>
+{% if state == 'login' and not request.user.is_authenticated %}
+<script>loadMenu(auth)</script>
+{% endif %}
+<header>
+	<ul id='header-nav'>
+		<li class='header-nav-element'><a href="/" class="header-link"><h1 id='name'>BestRecepies</h1></a></li>
+		<li class='header-nav-element'><a href="/authors" class="header-link"><h2 class='part'>Authors</h2></a></li>
+		<li class='header-nav-element'><a href="/forum" class="header-link"><h2 class='part'>Forum</h2></a></li>
+		<li class="header-nav-element">
+			<div class='search'>
+				<input type='text' name='search' placeholder='Search' class='search' id="search">
+				<button class='search' onclick="search()"><img src='{% static "images/search.png" %}' class='search'></button>
+			</div>
+		</li>
+		{% if request.user.is_authenticated %}
+		<li class='header-nav-element' id='lk'>
+			<a class="option-link" href="/me"><img src="{% get_media_prefix %}/{{request.user.avatar}}" id='lk-user-avatar'></a>
+			<ul id='user-options'>
+				<li class='option'><a class="option-link" href="/me">Профиль</a></li>
+				<li class='option'><a class="option-link" href="/user/logout">Выйти</a></li>
+			</ul>
+		</li>
+		{% else %}
+		<li class='header-nav-element'><a onclick="loadMenu(register)" class='login-link'>Sign up</a></li>
+		<li class='header-nav-element'><a onclick="loadMenu(auth)" class='login-link'>Sign in</a></li>
+		{% endif %}
+	</ul>
+</header>
+
+{% block nav %}{% endblock %}
+<main>
+{%block left_side%}{%endblock%}
+{%block content%}{%endblock%}
+{%block right-side%}{%endblock%}
+</main>
+
+
+</div>
+</body>

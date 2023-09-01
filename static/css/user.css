@@ -1,0 +1,118 @@
+#user-info {
+	background: white;
+	display: flex;
+	padding: 3% 4%;
+}
+
+#left-side {
+	width: 18%;
+}
+
+.stat {
+	margin: 0% 0% 3% 3%;
+	display: flex;
+}
+
+.stat-number {
+	font-size: 0.7em;
+	font-weight: 300;
+	margin: 0 0.2em;
+}
+
+#avatar {
+	width: 82%;
+	margin-bottom: 0.3em;
+}
+
+#right-side {
+    width: 60%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+#username {
+	margin: 0;
+	font-size: 1.2em;
+	font-weight: 500;
+}
+
+#description {
+	margin: 0.4em 0 0 0.3em;
+	font-size: 0.9em;
+	font-weight: 300;
+}
+
+#subscribe-button {
+	margin-left: 0.4em;
+	align-self: center;
+	width: 50%;
+	border: none;
+	border-radius: 0.7em;
+	background: #449DDE;
+	color: #f8f8f8;
+}
+
+#subscribe-button:hover {
+	background: #2988D9;
+	color: #fbfbfb;
+}
+
+#settings-side {
+	margin-left: 2em;
+	width: 17%;
+}
+
+#settings {
+	margin-left: calc(100% - 16px);
+	display: flex;
+	flex-direction: column;
+}
+
+#settings-list {
+	margin: 0;
+	margin-top: 0.2em;
+	padding: 0;
+	display: none;
+	width: 100%;
+	list-style: none;
+	text-align: center;
+	font-size: 0.6em;
+	font-weight: 300;
+	background: #fafafa;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+#settings:hover {
+	height: 5em;
+	margin: 0;
+	display: flex;
+	flex-direction: column;
+}
+
+#settings:hover #settings-icon {
+	align-self: flex-end;
+}
+
+#settings:hover #settings-list {
+	display: block;
+}
+
+.setting {
+	margin-top: 1px;
+	margin-bottom: 1px;
+}
+
+.setting:hover {
+	border-top: solid gray 1px;
+	border-bottom: solid gray 1px;
+}
+
+#delete-account {
+	color: #eb0505;
+}
+
+#delete-account:hover {
+	border-top: solid #eb0505 1px;
+	border-bottom: solid #eb0505 1px;	
+}

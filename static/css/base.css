@@ -1,0 +1,200 @@
+html, body, #container{
+	height: 100%;
+	padding: 0px;
+	margin: 0px;
+	background: #d9d9d9;
+	font-family: sans-serif;
+}
+
+header {
+	padding-top:1px;
+	background: #506a61;
+	width: 100%;
+	height: 60px;
+	margin: 0px 0px 20px 0px;
+	color: white;
+}
+
+#header-nav {
+	margin: 11px 0px 0px 30px;
+	padding: 0px;
+	display: flex;
+	flex-direction: row;
+	list-style-type: none;
+}
+
+li.header-nav-element {
+	margin: 0% 1% 0% 1%;
+}
+
+#name {
+	margin: 0px;
+	font-size: 1.8em;
+	font-style: italic;
+	font-weight: 800;
+}
+
+li.header-nav-element:nth-child(1){
+	width: 16%;
+	min-width: 12em;
+}
+
+.part {
+	margin: 0px;
+	font-size: 0.9em;
+	font-weight: 800;
+	padding-top: 10px;
+}
+
+li.header-nav-element:nth-child(2){
+	text-align: center;
+	margin-left: 6%;
+	width: 8%;
+	min-width: 4em;
+}
+
+li.header-nav-element:nth-child(3){
+	text-align: left;
+	width: 8%;
+}
+
+li.header-nav-element:nth-child(4){
+	padding-top: 10px;
+	width: 17%;
+}
+
+.search {
+	background: white;
+}
+div.search {
+	height: 22px;
+	display: flex;
+}
+
+input.search {
+	border: solid gray 1px;
+	border-right: none;
+	width: 100%;
+}
+
+img.search {
+	width: 16px;
+	height: 16px;
+	position: center;
+}
+
+button.search {
+	padding: 2px 2px 0px 0px;
+	border: solid gray 1px;
+	border-left: none;
+}
+
+.login-link {
+	font-size: 0.7em;
+	color: white;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+li.header-nav-element:nth-child(5) {
+	margin-left: 25%;
+	padding-top: 5px;
+}
+
+li.header-nav-element:nth-child(6) {
+	padding-top: 5px;
+}
+
+.header-link {
+    text-decoration: none;
+    color: white;
+}
+
+.header-link:link, .header-link:visited {
+	text-decoration: none;
+	color: white;
+}
+
+main {
+	margin: 10px 6% 0px 6%;
+	display: flex;
+}
+
+section {
+	margin-left: 1%;
+	width: 57%;
+}
+
+article {
+	background: white;
+	height: 12em;
+}
+
+nav {
+	margin: 0 30.5% 0 19%;
+	display: flex;
+	justify-content: space-between;
+}
+
+#lk {
+	margin-left: 29%;
+	margin-right: 0;
+	max-width: 8%;
+}
+
+#lk-user-avatar {
+	max-width: 30%;
+	margin-left: 45%;
+}
+
+#user-options {
+	display: none;
+}
+
+#lk:hover #user-options{
+	display: flex;
+	background: white;
+	flex-direction: column;
+	padding: 0;
+	color: black;
+	list-style: none;
+	font-size: 0.7em;
+}
+
+.option {
+	width: 100%;
+	text-align: center;
+	margin-top: calc(0.2em + 1px);
+	margin-bottom: 1px;
+}
+
+.option:hover {
+	border-top: solid gray 1px;
+	border-bottom: solid gray 1px;
+	margin-top: 0.2em;
+	margin-bottom: 0;
+	cursor: pointer;
+}
+
+.option-link, .option-link:hover, .option-link:visited {
+    text-decoration: none;
+    color: black;
+}
+
+#description-of-action {
+	font-size: 0.8em;
+	margin: 0% 7% 0%;
+	text-align: center;
+}
+
+.change-password {
+    height: 15em;
+}
+
+.change-avatar {
+    height: 10em;
+}
+
+.change-description {
+    height: 12em;
+}

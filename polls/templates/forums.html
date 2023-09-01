@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block links %}
+<link rel="stylesheet" type="text/css" href="/static/css/left-sidebar.css">
+<link rel="stylesheet" type="text/css" href="/static/css/forums.css?v=6">
+<script src="{% static 'js/setFilter.js' %}"></script>
+{% endblock %}
+
+{%block left_side%}
+
+{% endblock %}
+
+{% block nav %}
+{% if request.user.is_authenticated %}
+<nav>
+	<button id='new-theme' class='top-menu' onclick="loadMenu('api/makeforum')"><p id='plus-icon'>+</p><h2>Создать тему</h2></button>
+	<button class='themes-filter top-menu' onclick="setFilter('rating')"><h2>Популярное</h2></button>
+	<button class='themes-filter top-menu' onclick="setFilter('date')"><h2>Новое</h2></button>
+	<button class='themes-filter top-menu' onclick="setFilter('subscribes')"><h2>Отслеживаемое</h2></button>
+</nav>
+{% endif %}
+{% endblock %}
+
+{%block content%}
+	<aside class='left-sidebar'>
+		<form action='' method='GET'>
+		<ul class='left-sidebar'>
+			{% for theme in themes %}
+			<li><button class='left-sidebar' value='' type='button' onclick="setCategory({{theme.id}});" name='category'>{{theme.name}}</button></li>
+			{% endfor %}
+		</ul>
+	</form>
+	</aside>
+
+	<section id="content">
+	</section>
+	<script>var loadUrl = '/chunks/forums';</script>
+	<script src="{% static 'js/load-chunk.js'%}"></script>
+{%endblock%}

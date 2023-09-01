@@ -1,0 +1,31 @@
+{% load last_comment %}
+{% load static %}
+{% for forum in forums %}
+<article>
+<div class='text-info'>
+	<a href="/forum/{{forum.id}}"><h4 class='forum-name'>{{forum.name}}</h4></a>
+	<p class='first-comment'>{{forum.text_content}}</p>
+	<div class='about-comments'>
+		<img src="{% get_media_prefix %}/{{forum.author.avatar}}" class='user-avatar'>
+		<p class='creator-name'>{{forum.author.username}}</p>
+		<p class='date-of-creating'>{{ forum.date|calculate_date }}</p>
+		{% with last_comment=forum|last_comment %}
+		{% if last_comment is not None %}
+		<p class='date-of-last-comment'> Last comment {{ last_comment.date|calculate_date }}</p>
+		{% endif %}
+		{% endwith %}
+	</div>
+</div>
+<div class='forum-stat'>
+
+	<div class=stat-point>
+		<img src="/static/images/comment-icon.png" class='stat-icon'>
+		<p class='stat-number'>{{forum.comments}}</p>
+	</div>
+	<div class=stat-point>
+		<img src="/static/images/eye-icon.png" class='stat-icon'>
+		<p class='stat-number'>{{forum.views}}</p>
+	</div>
+</div>
+</article>
+{% endfor %}

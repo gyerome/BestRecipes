@@ -1,0 +1,94 @@
+content {
+	display: grid;
+	gap: 1.2em;
+	grid-template-rows: 1fr 1fr 1fr;
+	grid-template-columns: 1fr 1fr 1fr;
+}
+
+.user-header {
+	display: flex;
+	justify-content: start;
+	padding-left: 5%;
+	padding-top: 6%;
+}
+
+
+.user-avatar {
+	max-height: 27%;
+	max-width: 27%;
+}
+
+h3 {
+	font-size: 0.85em;
+	margin-left: 7%;
+
+}
+
+.username {
+    width: 35%;
+}
+
+.recipe-description {
+	padding-left: 1em;
+	font-size: 0.8em;
+	height: 35%;
+	hyphens: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.recipes-icon {
+	max-height: 16px;
+	align-self: center;
+	margin-left: 1.5em;
+}
+
+.recipes-quantity {
+	font-size: 0.6em;
+	color: #8f8f8f;
+	align-self: center;
+	margin-left: 0.3em;
+}
+
+.subscribe {
+	display: flex;
+	justify-content: flex-start;
+	max-height: 2em;
+	margin: 0em 0em 0em 0.8em;
+}
+
+.subscribe-button {
+	padding: 0;
+	text-align: center;
+	height: 2em;
+	border-radius: 0.7em 0px 0px 0.7em;
+	padding: 0 0.4em 0.2em 0.5em;
+	border: none;
+	background: #449DDE;
+	color: #f8f8f8;
+}
+
+.subscribe-button:hover {
+	background: #2988D9;
+	color: #fbfbfb;
+}
+
+.subscribers {
+	display: flex;
+	height: 2.06em;
+	text-align: center;
+	margin: 0;
+	align-self: center;
+	font-size: 0.75em;
+	border-radius: 0 0.7em 0.7em 0;
+	padding: 0 0.3em 0em 0.3em;
+	border: solid 1px gray;
+	border-left: none;
+}
+
+.subscribers-number {
+	margin: 0;
+	align-self: center;
+}

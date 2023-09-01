@@ -1,0 +1,12 @@
+<div id='shadow-container'>
+<div id='auth-menu'>
+    <h1 id='auth-header'>Создать рецепт</h1>
+    <form method="POST" action="/api/newrecipe" id='auth-form'>
+        {% csrf_token %}
+        {{ form.name }}
+        {{ form.category }}
+        {{ form.text_content }}
+        <button type="submit" id='submit-button'>Создать</button>
+    </form>
+</div>
+</div>

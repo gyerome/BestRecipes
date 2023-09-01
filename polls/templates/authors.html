@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block links %}
+<link rel="stylesheet" type="text/css" href="/static/css/left-sidebar.css">
+<link rel="stylesheet" type="text/css" href="/static/css/authors.css?v=1">
+<script src="{% static '/js/subscribe.js' %}"></script>
+{% endblock %}
+
+{%block left_side%}
+    <aside class='left-sidebar'>
+        <form action='' method='GET'>
+        <ul class=left-sidebar>
+            <li><button class='left-sidebar' value='' type='submit' name='category'>By followers</button></li>
+            <li><button class='left-sidebar' value='' type='submit' name='category'>By rating</button></li>
+            <li><button class='left-sidebar' value='' type='submit' name='category'>By username</button></li>
+        </ul>
+        </form>
+    </aside>
+{% endblock %}
+
+{%block content%}
+<section>
+    <content id="content"></content>
+    <script>var loadUrl='/chunks/authors';</script>
+	<script src="{% static '/js/load-chunk.js' %}"></script>
+</section>
+{%endblock%}
